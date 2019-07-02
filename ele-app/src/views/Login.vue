@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="logo">
-      <img src="../assets/logo.jpg" alt="logo">
+      <img src="../assets/logo.jpg" alt="logo" />
     </div>
     <!-- 输入手机号 -->
     <InputGroup
@@ -14,7 +14,7 @@
       @btnClick="getVerifyCode"
     />
     <!-- 输入验证码 -->
-    <InputGroup type="number" v-model="verifyCode" placeholder="请输入验证码" :error="errors.code"/>
+    <InputGroup type="number" v-model="verifyCode" placeholder="请输入验证码" :error="errors.code" />
 
     <!-- 用户服务协议 -->
     <div class="login_des">
@@ -54,12 +54,12 @@ export default {
     getVerifyCode() {
       if (this.validatePhone()) {
         // 验证一下手机号格式是否正确
-        this.validateBtn();
+        this.validateBtn(); //开始倒计时
         // 发送网络请求
         this.$axios
           .post("/api/posts/sms_send", {
-            tpl_id: "168497",
-            key: "060e4520d84c80e9852c1c8530bf6359",
+            tpl_id: "填入你的聚合数据短信API模板ID",
+            key: "填入你的聚合数据短信API Appkey",
             phone: this.phone
           })
           .then(res => {
@@ -109,7 +109,7 @@ export default {
           code: this.verifyCode
         })
         .then(res => {
-          // console.log(res);
+          console.log(res);
           // 检验成功 设置登录状态并且跳转到/
           localStorage.setItem("ele_login", true);
           this.$router.push("/");

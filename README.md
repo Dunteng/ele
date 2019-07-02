@@ -60,7 +60,7 @@ export default {
 </style>
 ```
 
-在router.js中配置路由，使用的是**路由的按需加载**：
+在router.js中配置路由，使用的是**路由的按需加载**以及**路由守卫**：
 
 ```js
 import Vue from 'vue'
@@ -68,7 +68,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -85,6 +85,18 @@ export default new Router({
 
   ]
 })
+//路由守卫
+router.beforeEach((to, from, next) => {
+  const isLogin = localStorage.ele_login ? true : false;
+  if (to.path == '/login') {
+    next();
+  } else {
+    // 是否在登录状态下
+    isLogin ? next() : next('/login');
+  }
+});
+
+export default router;
 
 ```
 
@@ -285,12 +297,13 @@ export default {
 
 Login.vue新增验证手机号码方法和倒计时方法：
 
-```
+```js
   methods: {
     getVerifyCode() {
       if (this.validatePhone()) {
         // 验证一下手机号格式是否正确
         this.validateBtn();
+          //开始倒计时
       }
     },
     validateBtn() {
@@ -328,7 +341,7 @@ Login.vue新增验证手机号码方法和倒计时方法：
   },
 ```
 
-### 开通聚合科技的短信API功能
+### 开通聚合数据的短信API功能
 
 <https://www.juhe.cn/myData>
 
@@ -375,8 +388,8 @@ module.exports = {
         // 发送网络请求
         this.$axios
           .post("/api/posts/sms_send", {
-            tpl_id: "136729",
-            key: "795be723dd9e88c3ea98e2b6713ab795",
+            tpl_id: "136729",//填入你的聚合数据短信API模板ID
+            key: "795be723dd9e88c3ea98e2b6713ab795",//填入你的聚合数据短信API Appkey
             phone: this.phone
           })
           .then(res => {

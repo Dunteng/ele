@@ -1,6 +1,5 @@
 <template>
   <div class="text_group">
-    <!-- 组件结构 -->
     <!-- 组件容器 -->
     <div class="input_group" :class="{'is-invalid':error}">
       <!-- 输入框 -->
@@ -10,7 +9,7 @@
         :placeholder="placeholder"
         :name="name"
         @input="$emit('input',$event.target.value)"
-      >
+      />
       <!-- 输入框后面的按钮 -->
       <button v-if="btnTitle" :disabled="disabled" @click="$emit('btnClick')">{{btnTitle}}</button>
     </div>
