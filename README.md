@@ -289,7 +289,9 @@ export default {
 
 到这一步的效果如下：
 
-![1561619110524](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1561619110524.png)
+![](https://raw.githubusercontent.com/Dunteng/images/master/BlogImages/illustration/ele-app/1561619110524.png)
+
+
 
 ## 实现验证码功能
 
@@ -349,7 +351,7 @@ Login.vue新增验证手机号码方法和倒计时方法：
 
 **一、**先安装**axios**，在main.js中引入import axios from 'axios'，并配置在**全局使用axios**
 
-![1561623715024](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1561623715024.png)
+![1561623715024](https://raw.githubusercontent.com/Dunteng/images/master/BlogImages/illustration/ele-app/1561623715024.png)
 
 **二、**新建一个vue.config.js文件，里面配置关于跨域请求的东西。
 
@@ -415,7 +417,7 @@ module.exports = {
 
 原button登录按钮绑定路由跳转事件：
 
-![1561626711738](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1561626711738.png)
+![1561626711738](https://raw.githubusercontent.com/Dunteng/images/master/BlogImages/illustration/ele-app/1561626711738.png)
 
 ```js
   computed: {
