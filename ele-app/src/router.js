@@ -10,12 +10,18 @@ const router = new Router({
     {
       path: '/',
       name: 'index',
-      component: ()=>import('./views/index.vue')
+      component: () => import('./views/index.vue')
     },
     {
       path: '/login',
       name: 'login',
-      component: ()=>import('./views/Login.vue')
+      component: () => import('./views/Login.vue')
+    },
+    {
+      path: '*',
+      redirect(to) {
+        return '/'
+      }
     }
 
   ]

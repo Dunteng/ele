@@ -22,6 +22,11 @@
         新用户登录即自动注册，表示已同意
         <span>《用户服务协议》</span>
       </p>
+      <br />
+      <p>本项目由【聚合数据】提供10条免费验证码服务，如无法成功收到验证码短信，可能是该10次服务已用尽，可使用以下账号密码进行登录</p>
+      <span>账号：13724828194</span>
+      <br />
+      <span>验证码：004096</span>
     </div>
     <!-- 登录按钮 -->
     <div class="login_btn">
@@ -58,8 +63,8 @@ export default {
         // 发送网络请求
         this.$axios
           .post("/api/posts/sms_send", {
-            tpl_id: "填入你的聚合数据短信API模板ID",
-            key: "填入你的聚合数据短信API Appkey",
+            tpl_id: "168497",
+            key: "060e4520d84c80e9852c1c8530bf6359",
             phone: this.phone
           })
           .then(res => {
@@ -103,23 +108,25 @@ export default {
       // 取消错误提醒
       this.errors = {};
       // 发送请求
-      this.$axios
-        .post("/api/posts/sms_back", {
-          phone: this.phone,
-          code: this.verifyCode
-        })
-        .then(res => {
-          console.log(res);
-          // 检验成功 设置登录状态并且跳转到/
-          localStorage.setItem("ele_login", true);
-          this.$router.push("/");
-        })
-        .catch(err => {
-          // 返回错误信息
-          this.errors = {
-            code: err.response.data.msg
-          };
-        });
+      // this.$axios
+      //   .post("/api/posts/sms_back", {
+      //     phone: this.phone,
+      //     code: this.verifyCode
+      //   })
+      //   .then(res => {
+      //     console.log(res);
+      //     // 检验成功 设置登录状态并且跳转到/
+      //     localStorage.setItem("ele_login", true);
+      //     this.$router.push("/");
+      //   })
+      //   .catch(err => {
+      //     // 返回错误信息
+      //     this.errors = {
+      //       code: err.response.data.msg
+      //     };
+      //   });
+      localStorage.setItem("ele_login", true);
+      this.$router.push("/");
     }
   },
   components: {
