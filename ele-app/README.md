@@ -470,3 +470,102 @@ module.exports = {
 ```
 
 至此发送和获取验证码并成功跳转的功能实现了。
+
+<br><br>
+
+## 封装底部tabbar组件
+
+- 在`/public/index.html`中引入字体图标样式
+
+  ```html
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  ```
+
+- 封装**tabbar**组件
+
+  ```vue
+  <template>
+    <div class="tabbar">
+      <router-link
+        class="tab-item"
+        v-for="(item,index) in data"
+        :key="index"
+        :to="item.path"
+        active-class="is-selected"
+      >
+        <div class="tab-item-icon">
+          <i :class="'fa fa-' + item.icon"></i>
+        </div>
+        <div class="tab-item-label">{{item.title}}</div>
+      </router-link>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    name: "tabbar",
+    props: {
+      data: Array
+    }
+  };
+  </script>
+  ```
+
+- 在`index.vue`里引用**tabbar**组件并在`router.js`中配置路由
+
+<br><br>
+
+## 高德地图api获取定位
+
+### 准备工作
+
+注册账号，创建应用，添加key。
+
+打开👉开发支持—>web端—>[地图JS api](https://lbs.amap.com/api/javascript-api/summary)
+
+里面有一个入口脚本标签，并将其中「您申请的key值」替换为您刚刚申请的 key；
+
+```html
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=您申请的key值"></script> 
+```
+
+我们在/public/index.html中进行引入。
+
+
+
+### 在App.vue中执行获取定位函数
+
+使用高德地图api提供的定位函数来进行获取定位，👉<https://lbs.amap.com/api/javascript-api/guide/services/geolocation>
+
+- 精准定位
+
+  ![1568285944608](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1568285944608.png)
+
+  以上是精准的定位，但是因为pc设备上大都缺少GPS芯片，所以在PC上的定位主要通过IP精准定位服务，该服务的失败率在5%左右。
+
+  精准定位失败的情况下要执行非精准定位。
+
+- 非精准定位
+
+  首先先通过[IP定位获取当前城市信息](https://lbs.amap.com/api/javascript-api/guide/services/geolocation)，获取到经纬度，然后利用经纬度进行[逆向地理编码](https://lbs.amap.com/api/javascript-api/guide/services/geocoder)。
+
+
+
+- 将定位数据显示到页面
+
+  - 通过 vuex 来处理位置location和地址address信息
+
+  - 在App.vue中使用 vuex 中的state、mutations等操作将数据显示到页面
+
+    ![1568289131669](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1568289131669.png)
+
+
+
+
+
+
+
+
+
+
+

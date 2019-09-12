@@ -9,8 +9,29 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
-      component: () => import('./views/index.vue')
+      // name: 'index',
+      component: () => import('./views/index.vue'),
+      children: [
+        {
+          path: '',
+          redirect: '/home'
+        },
+        {
+          path: '/home',
+          name: 'home',
+          component: () => import('./views/Home.vue')
+        },
+        {
+          path: '/order',
+          name: 'order',
+          component: () => import('./views/Order.vue')
+        },
+        {
+          path: '/me',
+          name: 'me',
+          component: () => import('./views/Me.vue')
+        },
+      ]
     },
     {
       path: '/login',
@@ -20,7 +41,7 @@ const router = new Router({
     {
       path: '*',
       redirect(to) {
-        return '/'
+        return '/home'
       }
     }
 
