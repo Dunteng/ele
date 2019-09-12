@@ -539,7 +539,7 @@ module.exports = {
 
 - 精准定位
 
-  ![1568285944608](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1568285944608.png)
+  ![1568285944608](https://raw.githubusercontent.com/rockdunteng/imageBed/master/Project/ele/1568285944608.png)
 
   以上是精准的定位，但是因为pc设备上大都缺少GPS芯片，所以在PC上的定位主要通过IP精准定位服务，该服务的失败率在5%左右。
 
@@ -557,7 +557,7 @@ module.exports = {
 
   - 在App.vue中使用 vuex 中的state、mutations等操作将数据显示到页面
 
-    ![1568289131669](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1568289131669.png)
+    ![1568289131669](https://raw.githubusercontent.com/rockdunteng/imageBed/master/Project/ele/1568289131669.png)
 
 
 
