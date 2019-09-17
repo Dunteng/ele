@@ -531,7 +531,7 @@ module.exports = {
 
 我们在/public/index.html中进行引入。
 
-
+<br>
 
 ### 在App.vue中执行获取定位函数
 
@@ -565,7 +565,48 @@ module.exports = {
 
 
 
+<br>
+
+## Address 和 City 两大功能完善
+
+**目标**：
+
+首页的头部点击后跳转到地址路由`address.vue`，实现目标如图所示：
+
+![1568292058440](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1568292058440.png)
 
 
 
+- 封装Header组件
+
+- 搜索框与定位信息显示
+
+  Address.vue传值给Location组件
+
+- 根据关键字检索地理信息
+
+  利用高德地图的[**输入提示与POI搜索**](https://lbs.amap.com/api/javascript-api/guide/services/autocomplete)
+
+  searchPlace ()
+
+- 点击搜索出来的地理信息后更改首页的头部地址
+
+  selectAddress ()
+
+<br><br>
+
+
+
+**目标**：点击 address 路由页面的城市名称跳转到 city 路由，进行城市搜索，搜索城市结果列表呈现，点击后跳转回 address 的路由并更新所在城市名称。
+
+实现的关键：
+
+- city 路由页面由 address 路由进入
+- 搜索前所在城市信息由`Home.vue`传入
+- 通过 axios 获取**后端数据**并队数据进行处理
+- alphabet 组件用于列表显示城市搜索结果
+- 使用 **better-scroll** 插件实现列表滚动
+- 字母索引
+- 关键字检索优化
+- 其他点击跳转优化
 
