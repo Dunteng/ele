@@ -610,3 +610,153 @@ module.exports = {
 - 关键字检索优化
 - 其他点击跳转优化
 
+
+
+
+
+<br><br>
+
+## 页面下滑头部搜索框固定
+
+目标：首页页面向下滑动一段距离后搜索框会固定在顶部
+
+![](G:\此电脑另一个账户Dunteng\GitHub\imageBed\Project\ele\dfgahaqfhuafda.gif)
+
+
+
+使用 position: sticky 实现粘性布局：
+
+```css
+.search_wrap {
+  position: sticky;
+  top: 0px;
+  z-index: 999;
+  box-sizing: border-box;
+}
+```
+
+
+
+<br><br>
+
+## Mint-UI实现加载动画和轮播图
+
+先安装：
+
+```
+ npm install mint-ui --save
+```
+
+
+
+在 main.js 中引入：
+
+```js
+import MintUI from 'mint-ui';
+
+import 'mint-ui/lib/style.css';
+
+Vue.use(MintUI)
+
+```
+
+
+
+使用**加载动画**则在 main.js 中引用 [indicator](https://mint-ui.github.io/docs/#/zh-cn2/indicator)
+
+```javascript
+import { Indicator } from 'mint-ui';
+
+// 请求拦截，发起axios请求的时候开启加载动画
+axios.interceptors.request.use(
+  config => {
+    // 加载动画
+    Indicator.open({
+      spinnerType: 'double-bounce'
+    });
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
+
+// 响应拦截，axios成功获取到数据时关闭加载动画
+axios.interceptors.response.use(
+  response => {
+    Indicator.close();
+    return response;
+  },
+  error => {
+    // 错误提醒
+    Indicator.close();
+    return Promise.reject(error);
+  }
+);
+```
+
+<br><br>
+
+实现轮播图
+
+- Home.vue 中的 getData() 进行 axios 请求数据，获取到轮播图等数据。
+- 使用 Mint-UI 的 [swipe](https://mint-ui.github.io/docs/#/zh-cn2/swipe)
+
+
+
+
+
+<br><br>
+
+## 实现分类和商家推荐
+
+实现过滤排序的组件 FilterView.vue
+
+
+
+## 实现商家显示和排序/筛选
+
+
+
+## 上拉下拉加载更多
+
+
+
+## 实现搜索商家
+
+
+
+
+
+## 页面的缓存优化
+
+数据未进行缓存优化
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

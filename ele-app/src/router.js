@@ -49,6 +49,11 @@ const router = new Router({
       component: () => import('./views/Login.vue')
     },
     {
+      path: '/search',
+      name: 'search',
+      component: () => import('./views/Search.vue')
+    },
+    {
       path: '*',
       redirect(to) {
         return '/home'
