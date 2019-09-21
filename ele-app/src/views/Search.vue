@@ -17,7 +17,7 @@
         </div>
       </div>
       <div v-else>
-        <SearchIndex @click="shopItemClick" :data="result.restaurants" />
+        <SearchIndex @click="skipToShop" :data="result.restaurants" />
         <SearchIndex @click="shopItemClick" :data="result.words" />
       </div>
     </div>
@@ -36,7 +36,7 @@ import Header from "../components/Header";
 import SearchIndex from "../components/SearchIndex";
 import FilterView from "../components/FilterView";
 import IndexShop from "../components/IndexShop";
-import { InfiniteScroll } from "mint-ui";
+import { InfiniteScroll, Toast } from "mint-ui";
 export default {
   name: "Search",
   components: {
@@ -126,6 +126,15 @@ export default {
             this.loading = true;
           }
         });
+    },
+    skipToShop() {
+      Toast({
+        message: "统一显示该页面",
+        iconClass: "icon icon-success",
+        duration: 1500,
+        position: "bottom"
+      });
+      this.$router.push("/shop");
     }
   }
 };

@@ -6,6 +6,7 @@ Vue.use(Router)
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
+  linkActiveClass: 'active',
   routes: [
     {
       path: '/',
@@ -52,6 +53,26 @@ const router = new Router({
       path: '/search',
       name: 'search',
       component: () => import('./views/Search.vue')
+    },
+    {
+      path: '/shop',
+      name: 'shop',
+      redirect: '/goods',
+      component: () => import('./views/Shops/Shop.vue'),
+      children: [
+        {
+          path: '/goods',
+          component: () => import('./views/Shops/Goods.vue')
+        },
+        {
+          path: '/seller',
+          component: () => import('./views/Shops/Seller.vue')
+        },
+        {
+          path: '/comments',
+          component: () => import('./views/Shops/Comments.vue')
+        }
+      ]
     },
     {
       path: '*',

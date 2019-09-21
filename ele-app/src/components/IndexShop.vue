@@ -1,6 +1,6 @@
 <template>
   <section class="index-container">
-    <div class="index-shopInfo">
+    <div class="index-shopInfo" @click="skipToShop">
       <!-- 左侧图片 -->
       <div class="logo_container">
         <img :src="restaurant.image_path" alt />
@@ -45,6 +45,7 @@
 
 <script>
 import Rating from "./Rating";
+import { Toast } from "mint-ui";
 export default {
   name: "IndeShop",
   props: {
@@ -52,6 +53,17 @@ export default {
   },
   components: {
     Rating
+  },
+  methods: {
+    skipToShop() {
+      Toast({
+        message: "统一显示该页面",
+        iconClass: "icon icon-success",
+        duration: 1500,
+        position: "bottom"
+      });
+      this.$router.push("/shop");
+    }
   }
 };
 </script>
