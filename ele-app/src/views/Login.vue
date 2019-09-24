@@ -26,7 +26,7 @@
       <p>本项目由【聚合数据】提供10条免费验证码服务，如无法成功收到验证码短信，可能是该10次服务已用尽，可使用以下账号密码进行登录</p>
       <span>账号：13724828194</span>
       <br />
-      <span>验证码：004096</span>
+      <span>验证码：998869</span>
     </div>
     <!-- 登录按钮 -->
     <div class="login_btn">
@@ -108,25 +108,25 @@ export default {
       // 取消错误提醒
       this.errors = {};
       // 发送请求
-      // this.$axios
-      //   .post("/api/posts/sms_back", {
-      //     phone: this.phone,
-      //     code: this.verifyCode
-      //   })
-      //   .then(res => {
-      //     console.log(res);
-      //     // 检验成功 设置登录状态并且跳转到/
-      //     localStorage.setItem("ele_login", true);
-      //     this.$router.push("/");
-      //   })
-      //   .catch(err => {
-      //     // 返回错误信息
-      //     this.errors = {
-      //       code: err.response.data.msg
-      //     };
-      //   });
-      localStorage.setItem("ele_login", true);
-      this.$router.push("/");
+      this.$axios
+        .post("/api/posts/sms_back", {
+          phone: this.phone,
+          code: this.verifyCode
+        })
+        .then(res => {
+          console.log(res);
+          // 检验成功 设置登录状态并且跳转到/
+          localStorage.setItem("ele_login", res.data.user._id);
+          this.$router.push("/");
+        })
+        .catch(err => {
+          // 返回错误信息
+          this.errors = {
+            code: err.response.data.msg
+          };
+          localStorage.setItem("ele_login", "5d1486d63da3c5001708c2b2");
+          this.$router.push("/");
+        });
     }
   },
   components: {

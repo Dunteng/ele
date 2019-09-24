@@ -75,6 +75,30 @@ const router = new Router({
       ]
     },
     {
+      path: "/myAddress",
+      component: () => import('./views/Orders/MyAddress.vue')
+    },
+    {
+      path: "/addAddress",
+      name: "addAddress",
+      component: () => import('./views/Orders/AddAddress.vue')
+    },
+    {
+      path: "/settlement",
+      name: "settlement",
+      component: () => import('./views/Orders/Settlement.vue')
+    },
+    {
+      path: "/remark",
+      name: "remark",
+      component: () => import('./views/Orders/Remark.vue')
+    },
+    {
+      path: "/pay",
+      name: "pay",
+      component: () => import("./views/Orders/Pay.vue")
+    },
+    {
       path: '*',
       redirect(to) {
         return '/home'
