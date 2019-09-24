@@ -5,17 +5,24 @@ import store from './store'
 import axios from 'axios'
 import MintUI from 'mint-ui';
 import 'mint-ui/lib/style.css';
+import qs from 'qs';
 
 import { Indicator } from 'mint-ui';
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios  /* 全局使用axios */
 
+axios.defaults.baseURL = 'https://ele-interface.herokuapp.com/';
+
 Vue.use(MintUI)
 
 // 请求拦截，发起axios请求的时候开启加载动画
 axios.interceptors.request.use(
   config => {
+    if (config.method == 'post') {
+      config.data = qs.stringify(config.data);
+    }
+
     // 加载动画
     Indicator.open({
       spinnerType: 'double-bounce'

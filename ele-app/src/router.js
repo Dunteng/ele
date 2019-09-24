@@ -99,6 +99,11 @@ const router = new Router({
       component: () => import("./views/Orders/Pay.vue")
     },
     {
+      path: '/orderInfo',
+      name: 'orderInfo',
+      component: () => import('./views/Orders/OrderInfo.vue')
+    },
+    {
       path: '*',
       redirect(to) {
         return '/home'

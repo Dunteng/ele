@@ -96,10 +96,10 @@ export default {
 .index_main {
   display: flex;
   justify-content: space-between;
-  overflow: hidden;
+  /* overflow: hidden; */
   flex-direction: column;
   padding-left: 2.666667vw;
-  font-size: 0.2rem;
+  font-size: 0.66rem;
   flex-grow: 1;
 }
 .index_shopname {
